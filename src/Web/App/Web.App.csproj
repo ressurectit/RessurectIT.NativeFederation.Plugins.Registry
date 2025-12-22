@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+    <!-- BASIC INFO -->
+    <PropertyGroup>
+        <RootNamespace>RessurectIT.NativeFederation.Plugins.Registry.Web.App</RootNamespace>
+        <AssemblyName>RessurectIT.NativeFederation.Plugins.Registry.Web.App</AssemblyName>
+        <Description>Application used as registry for Native Federation plugins</Description>
+    </PropertyGroup>
+
+    <!-- BUILD PROPERTIES -->
+    <PropertyGroup>
+        <OutputType>exe</OutputType>
+        <GitArgSuffix>debug</GitArgSuffix>
+        <PreserveCompilationContext>true</PreserveCompilationContext>
+        <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    </PropertyGroup>
+
+    <!-- NUGET DEPENDENCIES -->
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+        <PackageReference Include="RessurectIT.Git.Version" PrivateAssets="All" />
+        <PackageReference Include="Scalar.AspNetCore" />
+        <PackageReference Include="Serilog" />
+        <PackageReference Include="Serilog.AspNetCore" />
+        <PackageReference Include="Serilog.Expressions" />
+        <PackageReference Include="Serilog.Settings.Configuration" />
+        <PackageReference Include="Serilog.Sinks.Console" />
+        <PackageReference Include="Serilog.Sinks.Debug" />
+        <PackageReference Include="Serilog.Sinks.File" />
+        <PackageReference Include="Swashbuckle.AspNetCore" />
+        <PackageReference Include="Swashbuckle.AspNetCore.ReDoc" />
+    </ItemGroup>
+</Project>

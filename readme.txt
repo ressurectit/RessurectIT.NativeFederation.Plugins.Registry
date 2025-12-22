@@ -1,0 +1,1 @@
+﻿Application used as registry for *Native Federation* plugins

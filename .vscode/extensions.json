@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+        "ms-dotnettools.vscode-dotnet-runtime",
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.csdevkit",
+        "usernamehw.errorlens",
+        "mhutchie.git-graph",
+        "eamodio.gitlens",
+        "humao.rest-client",
+        "gruntfuggly.todo-tree",
+        "vscode-icons-team.vscode-icons",
+        "timheuer.resx-editor"
+    ]
+}

@@ -1,0 +1,1 @@
+Get-Item src/*/*/bin,src/*/*/obj,src/*/*/*.user | ForEach-Object{Write-Host $_; Remove-Item $_ -Force -Recurse -ErrorAction SilentlyContinue}

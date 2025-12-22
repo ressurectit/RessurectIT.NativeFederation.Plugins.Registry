@@ -1,0 +1,10 @@
+.vs
+.include
+*.bak
+*~
+*.nupkg
+.user
+bin/
+obj/
+Logs/
+buildVersion.txt
