@@ -25,10 +25,10 @@ public class RegistryController(PluginsRegistryService registry) : ControllerBas
     /// Get Plugins
     /// </summary>
     /// <remarks>
-    /// Gets plugins SSE stream, available event types 'all', 'add', 'remove'
+    /// Gets plugins SSE stream, available event types 'All', 'Add', 'Remove', 'Update'
     /// </remarks>
     /// <param name="cancellationToken">Token used for cancelation of reading logs</param>
-    /// <returns>SSE stream with event types 'all', 'add', 'remove'</returns>
+    /// <returns>SSE stream with event types 'All', 'Add', 'Remove', 'Update'</returns>
     [AllowAnonymous]
     [EndpointGroupName("v1")]
     [ProducesResponseType<IEnumerable<RemoteData>>(StatusCodes.Status200OK, ContentTypes.Json)]

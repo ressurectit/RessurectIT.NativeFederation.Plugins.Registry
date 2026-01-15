@@ -95,10 +95,20 @@ public class PluginsRegistryService
         {
             TaskCompletionSource<PluginEventInfo> taskPromise = _taskPromise;
             _taskPromise = new();
-            _registry.Add(pluginInfo);
+
+            if(_registry.SingleOrDefault(itm => itm.Name == pluginInfo.Name) is PluginInfo existing)
+            {
+                _registry.Remove(existing);
+                _registry.Add(pluginInfo);
+                taskPromise.SetResult((PluginEvent.Update, pluginInfo));
+            }
+            else
+            {
+                _registry.Add(pluginInfo);
+                taskPromise.SetResult((PluginEvent.Add, pluginInfo));
+            }
+
             WriteRegistry();
-            taskPromise.SetResult((PluginEvent.Add, pluginInfo));
-            
         }
     }
 
@@ -115,9 +125,14 @@ public class PluginsRegistryService
         {
             TaskCompletionSource<PluginEventInfo> taskPromise = _taskPromise;
             _taskPromise = new();
-            _registry.Remove(pluginInfo);
+
+            if(_registry.SingleOrDefault(itm => itm.Name == pluginInfo.Name) is PluginInfo existing)
+            {
+                _registry.Remove(existing);
+                taskPromise.SetResult((PluginEvent.Remove, existing));
+            }
+
             WriteRegistry();
-            taskPromise.SetResult((PluginEvent.Remove, pluginInfo));
         }
     }
 
@@ -128,7 +143,11 @@ public class PluginsRegistryService
     /// <returns>Task with <see cref="PluginEventInfo"/></returns>
     public async Task<PluginEventInfo> WaitForPluginEvent(CancellationToken cancellationToken)
     {
-        using (cancellationToken.Register(() => _taskPromise.TrySetCanceled())) 
+        using (cancellationToken.Register(() => 
+                                          {
+                                               _taskPromise.TrySetCanceled();
+                                               _taskPromise = new();
+                                          })) 
         {
             return await _taskPromise.Task;
         } 

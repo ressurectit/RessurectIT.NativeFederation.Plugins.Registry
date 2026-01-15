@@ -14,4 +14,9 @@ public enum PluginEvent
     /// Remove existing plugin
     /// </summary>
     Remove,
+
+    /// <summary>
+    /// Updates existing plugin
+    /// </summary>
+    Update,
 }
